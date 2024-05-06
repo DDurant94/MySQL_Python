@@ -52,7 +52,7 @@ def main_delete():
           trainers_id = int(input("Enter Trainer I.D. Number: "))
           delete_trainers(trainers_id,cursor)
         elif menu_choice == "3":
-          session_id = int(input("Enter Session I.D. Number:"))
+          session_id = int(input("Enter Session I.D. Number: "))
           delete_workout_sessions(session_id,cursor)
         elif menu_choice == "4":
           conn.commit()

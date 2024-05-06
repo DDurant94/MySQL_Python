@@ -4,7 +4,7 @@ conn = connect_database()
 if conn is not None:
   try:
     cursor = conn.cursor()
-    query = """ALTER TABLE Trainers
+    query = """ALTER TABLE members
     
     """
     cursor.execute(query)

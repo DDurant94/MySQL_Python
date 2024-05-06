@@ -8,7 +8,8 @@ def add_member(name,age,trainer_id,cursor):
     print(f"{name} is already in database")
   else:
     query = "INSERT INTO Members (name,age,trainer_id) VALUES (%s,%s,%s)"
-    cursor.execute(query,(name,age,trainer_id))
+    cursor.execute(query,(name,age,trainer_id,))
+    print(type(trainer_id))
 
 def add_trainer(name,email,cursor):
   search = "SELECT name FROM trainers WHERE name = %s"
@@ -20,8 +21,6 @@ def add_trainer(name,email,cursor):
     query = "INSERT INTO Trainers (name,email) VALUES (%s,%s)"
     cursor.execute(query,(name,email))
 
-# fix the foreign key as well in this 
-# add_workout_session(member_id, date, duration_minutes, calories_burned)
 def add_workout_sessions(customer_id,duration_time,cals_burned,date,cursor):
   search = "SELECT id FROM workoutsessions as w WHERE customer_id = %s and date = %s"
   cursor.execute(search,(customer_id,date))
@@ -29,7 +28,7 @@ def add_workout_sessions(customer_id,duration_time,cals_burned,date,cursor):
   if finding: # change date set up and tables
     print("Customer is already booked for that day.")
   else:
-    query = "INSERT INTO workoutsessions (customer_id,duration_time,calories_burned,date) VALUES (%s,%s,%s,%s)"
+    query = "INSERT INTO workoutsessions (customer_id,duration_minutes,calories_burned,date) VALUES (%s,%s,%s,%s)"
     cursor.execute(query,(customer_id,duration_time,cals_burned,date))
 
 def main_add():
